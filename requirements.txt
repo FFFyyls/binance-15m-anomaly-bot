@@ -1,0 +1,2 @@
+# Compatibility install for the complete research and reporting toolset.
+-e .[research,reports]

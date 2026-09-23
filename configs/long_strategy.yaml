@@ -1,0 +1,135 @@
+universe:
+  min_24h_quote_usdt: 1000000
+  top_n_24h_quote: 500
+  whitelist_symbols_file: symbols_top60.txt
+  ignore_whitelist: true
+  max_spread_bps: 25
+  blacklist:
+  - BTCUSDT
+  - ETHUSDT
+signal:
+  window_minutes: 5
+  abs_r15_threshold: 0.16679128108211472
+  use_abs_threshold: true
+  vol_norm:
+    enabled: true
+    k: 2.5
+    sigma_lookback_windows: 96
+    sigma_lookback_15m: 96
+  trigger_mode: open
+volume:
+  multiple: 9.829513224430285
+  typical_def: median_96_15m_quote
+  baseline_method: median
+  baseline_lookback_windows: 260
+  baseline_lookback_15m: 96
+  use_quote_volume: false
+  use_percentile_threshold: true
+  percentile: 96.86131953165147
+  percentile_lookback_windows: 59
+entry:
+  strict_below_close_for_all: false
+  symmetric_close_rule: true
+  allow_long: true
+  allow_short: false
+  maker_only: false
+  max_taker_slippage_bps: 8.564735536879528
+  signal_to_order_deadline_s: 180
+  order_ttl_s: 60
+  min_pullback_bps: 4
+position:
+  notional_usdt_per_trade: 15.526278531172945
+  use_equity_sizing: true
+  use_internal_equity: true
+  initial_equity_usdt: 15
+  min_equity_usdt: 0
+  position_pct_of_equity: 0.07031034439086976
+  min_notional_usdt: 0.0
+  equity_refresh_s: 10
+  leverage: 9
+  max_concurrent_positions: 15
+  max_abs_funding_rate: 0.002
+risk:
+  hard_stop_pct: 0.01563026299181255
+  liquidation_buffer_pct: 0.001
+  use_mark_price_for_risk: false
+  loop_interval_s: 0.2
+  max_stale_price_s: 5
+  max_daily_loss_usdt: 100
+  kill_switch_on_ws_disconnect: true
+  ws_stale_seconds: 30
+  atr_enabled: false
+  atr_period: 16
+  atr_multiplier: 2.5773680315201783
+takeprofit:
+  mode: hybrid
+  staged_partial:
+    levels:
+    - r_multiple: 0.8580428716757866
+      fraction: 0.2512360545032728
+    - r_multiple: 2.887494234279008
+      fraction: 0.2279354456256204
+    move_stop_to_breakeven_after_r: 1.9952172922907683
+  trailing_ladder:
+    p1: 0.027195907860462273
+    p2: 0.051230580657668355
+    lock2: 0.01830400199043656
+    p3: 0.0647771889286072
+    trail_pct: 0.020663472873858602
+engine:
+  kline_poll_interval_s: 10
+  rest_concurrency: 20
+  heartbeat_interval_s: 1800
+  trigger_workers: 8
+  use_aggtrades_ws: true
+  agg_trade_chunk_size: 200
+  agg_trade_bars_maxlen: 0
+  bar_interval_s: 10
+  baseline_refresh_s: 900
+  log_level: INFO
+execution:
+  max_fill_pct_of_bar: 0.03
+  min_fill_notional_usdt: 0
+  allow_partial_fill: true
+  require_bar_for_execution: true
+  slippage_bps_base: 5.0
+  slippage_bps_k: 0.15
+  slippage_bps_min: 2.0
+  slippage_bps_max: 80.0
+  slippage_towards_market: true
+backtest:
+  maker_fee: 0.0002
+  taker_fee: 0.0004
+  slippage_bps: 5.0
+  entry_offset_bps: 54
+  data_interval_seconds: 20
+  liquidation_buffer_pct: 0.01448252609649449
+  max_fill_pct_of_bar: 0.07378794744745663
+  min_fill_notional_usdt: 2.56438619967267
+  allow_partial_fill: true
+  slippage_bps_base: 5.0
+  slippage_bps_k: 0.15
+  slippage_bps_min: 2.0
+  slippage_bps_max: 80.0
+  max_holding_minutes: 20
+  max_holding_bars: 60
+  time_exit_price: close
+  use_portfolio_sizing: true
+  initial_capital_usdt: 15
+  position_pct_of_equity: 0.07031034439086976
+  leverage: 9
+  max_concurrent_positions: 15
+time_exit:
+  profit_1: 0.019289122625154708
+  profit_2: 0.03542301800189865
+  hold_1_minutes: 27
+  hold_2_minutes: 29
+trend_filter:
+  enabled: false
+  window_minutes: 60
+  ma_window: 22
+aux_filters:
+  trend_ma_enabled: false
+  trend_ma_bars: 0
+  min_range_pct: 0.0
+  max_range_pct: 0.0

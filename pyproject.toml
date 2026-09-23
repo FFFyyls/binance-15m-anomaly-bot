@@ -1,0 +1,62 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "binance-15m-anomaly-bot"
+version = "0.1.0"
+description = "Binance USDT-M anomaly monitoring, execution, and backtesting toolkit."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "Apache-2.0"
+keywords = ["binance", "trading", "backtesting", "cryptocurrency"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Office/Business :: Financial :: Investment",
+]
+dependencies = [
+  "aiohttp>=3.9.5,<4",
+  "numpy>=2.0.1,<3",
+  "orjson>=3.10.7,<4",
+  "PyYAML>=6.0.2,<7",
+  "python-dotenv>=1.0.1,<2",
+  "websockets>=12,<17",
+]
+
+[project.optional-dependencies]
+research = [
+  "pandas>=2.2.2,<4",
+  "requests>=2.32.3,<3",
+]
+reports = [
+  "matplotlib>=3.9,<4",
+  "quantstats>=0.0.64,<1",
+  "seaborn>=0.13,<1",
+]
+dev = [
+  "build>=1.2,<2",
+  "pip-audit>=2.7,<3",
+  "pytest>=8,<10",
+  "ruff>=0.8,<1",
+]
+
+[project.scripts]
+binance-anomaly-bot = "binance_anomaly_bot.cli:run"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+
+[tool.ruff]
+target-version = "py310"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E9", "F63", "F7", "F82"]

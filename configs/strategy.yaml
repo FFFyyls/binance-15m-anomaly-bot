@@ -1,0 +1,184 @@
+direction:
+  enable_long: true
+  enable_short: true
+universe:
+  min_24h_quote_usdt: 100000
+  top_n_24h_quote: 700
+  whitelist_symbols_file: symbols_top60.txt
+  ignore_whitelist: true
+  max_spread_bps: 25
+  blacklist:
+  - BTCUSDT
+  - ETHUSDT
+signal:
+  window_minutes: 8
+  abs_r15_threshold: 0.1666103759638438
+  use_abs_threshold: true
+  vol_norm:
+    enabled: true
+    k: 2.5
+    sigma_lookback_windows: 96
+    sigma_lookback_15m: 96
+  trigger_mode: range
+volume:
+  multiple: 9.350185658811162
+  typical_def: median_96_15m_quote
+  baseline_method: median
+  baseline_lookback_windows: 242
+  baseline_lookback_15m: 96
+  use_quote_volume: false
+  use_percentile_threshold: true
+  percentile: 96.70243741799983
+  percentile_lookback_windows: 210
+entry:
+  strict_below_close_for_all: false
+  symmetric_close_rule: true
+  allow_long: true
+  allow_short: true
+  maker_only: false
+  max_taker_slippage_bps: 20.0
+  signal_to_order_deadline_s: 180
+  order_ttl_s: 60
+  min_pullback_bps: 1
+position:
+  notional_usdt_per_trade: 15.526278531172945
+  use_equity_sizing: true
+  use_internal_equity: true
+  use_account_update_sync: true
+  initial_equity_usdt: 15
+  min_equity_usdt: 0
+  position_pct_of_equity: 0.07031034439086976
+  min_notional_usdt: 0.0
+  equity_refresh_s: 10
+  leverage: 9
+  max_concurrent_positions: 15
+  max_abs_funding_rate: 0.02
+risk:
+  hard_stop_pct: 0.01151927859298776
+  liquidation_buffer_pct: 0.001
+  use_mark_price_for_risk: false
+  stop_slippage_bps_max: 20.0
+  loop_interval_s: 0.2
+  max_stale_price_s: 5
+  max_daily_loss_usdt: 100
+  kill_switch_on_ws_disconnect: true
+  ws_stale_seconds: 30
+  atr_enabled: false
+  atr_period: 16
+  atr_multiplier: 2.5773680315201783
+takeprofit:
+  preplace_orders: true
+  maker_offset_ticks: 1
+  mode: hybrid
+  staged_partial:
+    levels:
+    - r_multiple: 0.8352502048866226
+      fraction: 0.22174202738493465
+    - r_multiple: 4.0
+      fraction: 0.14829726445741404
+    move_stop_to_breakeven_after_r: 2.154086872410472
+  trailing_ladder:
+    p1: 0.029063072483197387
+    p2: 0.03356044419439668
+    lock2: 0.007737336122581323
+    p3: 0.04
+    trail_pct: 0.0067091639714086234
+engine:
+  kline_poll_interval_s: 5
+  rest_concurrency: 10
+  heartbeat_interval_s: 1800
+  trigger_workers: 8
+  use_aggtrades_ws: true
+  agg_trade_chunk_size: 200
+  agg_trade_bars_maxlen: 0
+  agg_trade_keep_minutes: 15.5
+  bar_interval_s: 10
+  baseline_refresh_s: 1800
+  log_level: INFO
+rest:
+  min_interval_s: 0.1
+  max_retries: 2
+  retry_base_s: 0.5
+  max_retry_s: 5.0
+execution:
+  max_fill_pct_of_bar: 0.03
+  min_fill_notional_usdt: 0
+  allow_partial_fill: true
+  require_bar_for_execution: true
+  slippage_bps_base: 5.0
+  slippage_bps_k: 0.15
+  slippage_bps_min: 2.0
+  slippage_bps_max: 80.0
+  slippage_towards_market: true
+backtest:
+  maker_fee: 0.0002
+  taker_fee: 0.0005
+  slippage_bps: 5.0
+  entry_offset_bps: 54
+  data_interval_seconds: 20
+  liquidation_buffer_pct: 0.01448252609649449
+  max_fill_pct_of_bar: 0.07378794744745663
+  min_fill_notional_usdt: 2.56438619967267
+  allow_partial_fill: true
+  slippage_bps_base: 5.0
+  slippage_bps_k: 0.15
+  slippage_bps_min: 2.0
+  slippage_bps_max: 80.0
+  max_holding_minutes: 20
+  max_holding_bars: 60
+  time_exit_price: close
+  use_portfolio_sizing: true
+  initial_capital_usdt: 15
+  position_pct_of_equity: 0.07031034439086976
+  leverage: 9
+  max_concurrent_positions: 15
+time_exit:
+  profit_1: 0.03158129042485144
+  profit_2: 0.04737193563727715
+  hold_1_minutes: 14
+  hold_2_minutes: 34
+trend_filter:
+  enabled: false
+  window_minutes: 60
+  ma_window: 22
+aux_filters:
+  trend_ma_enabled: false
+  trend_ma_bars: 0
+  min_range_pct: 0.0
+  max_range_pct: 0.0
+long_strategy:
+  enabled: true
+  overrides:
+    signal:
+      abs_r15_threshold: 0.16420842166409277
+      trigger_mode: range
+    volume:
+      multiple: 12.39959140615949
+      baseline_lookback_windows: 136
+    entry:
+      allow_long: true
+      allow_short: true
+    takeprofit:
+      staged_partial:
+        levels:
+        - r_multiple: 1.5154230120054835
+          fraction: 0.19335951546162078
+        - r_multiple: 5.290042584958325
+          fraction: 0.3374773489431169
+        move_stop_to_breakeven_after_r: 0.8396175399493297
+      trailing_ladder:
+        p1: 0.014099499813349597
+        p2: 0.02252247526702668
+        lock2: 0.0028198864010856163
+        p3: 0.046384512772427444
+        trail_pct: 0.014800019403083675
+    time_exit:
+      profit_1: 0.015584699119774862
+      profit_2: 0.03246621152139503
+      hold_1_minutes: 14
+      hold_2_minutes: 32
+bollinger:
+  enabled: true
+  window_minutes: 8
+  num_std: 1.8
+  mode: filter

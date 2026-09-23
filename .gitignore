@@ -1,0 +1,59 @@
+# Secrets and local environment
+.env
+.env.*
+!.env.example
+
+# Python environments, caches, and build output
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+build/
+dist/
+
+# Editors and operating systems
+.DS_Store
+._*
+.idea/
+.vscode/
+*.swp
+
+# Runtime state
+*.sqlite
+*.sqlite3
+*.db
+logs/
+tmp/
+temp/
+.mplcache/
+
+# Large local datasets. Keep documentation and tiny samples only.
+data/*
+!data/README.md
+!data/samples/
+!data/samples/**
+币种数据整合_*/
+行情数据/
+
+# Generated research and report output
+artifacts/
+results/
+results_*/
+test_report*/
+train_report*/
+回测结果_*/
+回测报告_*/
+!examples/results/
+!examples/results/**
+
+# Generated local manifests
+existing_symbols.txt
+missing_data.txt
+
+# Local execution-plan scratch space
+.superpowers/
